@@ -1,0 +1,27 @@
+function nChai(n, k, g, b) {
+    if(g + b !== n) {
+        return [];
+    }
+    let output = [];
+    let greenChaiCount = 0;
+    let blackChaiCount = 0;
+    for(let i = 0; i < n; i++) {
+        if((greenChaiCount < k || blackChaiCount === k) && g > 0) {
+            output.push("Green");
+            greenChaiCount++;
+            blackChaiCount = 0;
+            g--;
+        } else if((blackChaiCount < k || greenChaiCount === k) && b > 0) {
+            output.push("Black");
+            blackChaiCount++;
+            greenChaiCount = 0;
+            b--;
+        } else {
+            return [];
+        }
+    }
+    return output;
+}
+
+console.log(nChai(5, 1, 3, 2));
+console.log(nChai(4, 3, 4, 0));
